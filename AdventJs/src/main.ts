@@ -6,6 +6,7 @@ import { findFirstRepeated } from './challenges/challenge1.ts'
 import { manufacture } from './challenges/challenge2.ts'
 import { findNaughtyStep } from './challenges/challenge3.ts'
 import { decode } from './challenges/challenge4.ts'
+import { cyberReindeer } from './challenges/challenge5.ts'
 
 findFirstRepeated([2, 1, 3, 5, 3, 2])
 
@@ -13,6 +14,8 @@ manufacture(['tren', 'oso', 'pelota'], 'tronesa')
 findNaughtyStep('abcd', 'abcde')
 
 decode('hola (odnum)')
+
+cyberReindeer('S..|...|..', 10)
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>

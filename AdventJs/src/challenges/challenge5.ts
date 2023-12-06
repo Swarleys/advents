@@ -33,43 +33,27 @@ console.log(result)
 */
 
 export function cyberReindeer(road: string, time: number): string[] {
-    const roadArray = road.split('');
-    const filteredBarriers: number[] = [];
-    roadArray.filter((road, index) => {
-        if (road === '|') {
-            filteredBarriers.push(index);
-            return true;
-        }
-    })
-    const result = [];
-    let sledPosition = 0;
+    const result = [road];
+    let i = 0;
 
-    for (let i = 0; i < time; i++) {
-        if (i === 0) {
-            result.push(roadArray.join(''))
-            continue;
+    for (let t = 1; t < Math.min(5, time); t++) {
+        const nextChar = road[i + 1];
+        if (nextChar !== '|') {
+            road = `${road.slice(0, i)}${nextChar}S${road.slice(i + 2)}`;
+            i++;
         }
-        if (i > 4) {
-            roadArray.forEach((char, index) => {
-                if (char === '|') {
-                    roadArray[index] = '*';
-                }
-            })
-        }
+        result.push(road);
+    }
 
-        if (roadArray[sledPosition + 1] === '.' || roadArray[sledPosition + 1] === '*') {
-            roadArray[sledPosition] = '.';
-            filteredBarriers.forEach(barrier => {
-                if (barrier === sledPosition && barrier < i) {
-                    console.log('barrier', barrier, sledPosition);
-                    roadArray[sledPosition] = '*';
-                }
-            });
-            sledPosition++;
-            roadArray[sledPosition] = 'S';
-        }
+    road = road.replaceAll('|', '*');
+    let aux = '.';
 
-        result.push(roadArray.join(''));
+    for (let t = 5; t < time; t++) {
+        const nextChar = road[i + 1];
+        road = `${road.slice(0, i)}${aux}S${road.slice(i + 2)}`;
+        aux = nextChar;
+        i++;
+        result.push(road);
     }
 
     return result;

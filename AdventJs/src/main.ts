@@ -8,6 +8,7 @@ import { findNaughtyStep } from './challenges/challenge3.ts'
 import { decode } from './challenges/challenge4.ts'
 import { cyberReindeer } from './challenges/challenge5.ts'
 import { maxDistance } from './challenges/challenge6.ts'
+import { drawGift } from './challenges/challenge7.ts'
 
 findFirstRepeated([2, 1, 3, 5, 3, 2])
 
@@ -19,6 +20,10 @@ decode('hola (odnum)')
 cyberReindeer('S..|...|..', 10)
 
 maxDistance('<<>><')
+
+drawGift(4, '+')
+
+
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>

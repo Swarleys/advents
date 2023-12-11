@@ -118,9 +118,10 @@
 {#snippet showDeck()}
 	<div class={`grid grid-cols-8 gap-2 max-w-[800px] m-auto`}>
 		{#each shuffledDeck as card, index}
-			<button onclick={() => selectedCard(index)} disabled={matches.includes(index) || disabled} class='h-[138px]'>
+		{@const selectedOrMatched = selectedCards.includes(index) || matches.includes(index)}
+			<button onclick={() => selectedCard(index)} disabled={selectedOrMatched || disabled} class='h-[138px]'>
 				<img
-					src={selectedCards.includes(index) || matches.includes(index) ? card : cardBack}
+					src={selectedOrMatched ? card : cardBack}
 					alt={`card ${index}`}
 					class:opacity-70={matches.includes(index)}
 				/>
